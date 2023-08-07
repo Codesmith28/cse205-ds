@@ -2,7 +2,7 @@
 
 Welcome to the DSA LeetCode Problems repository! This repository contains a collection of Data Structures and Algorithms (DSA) problems from LeetCode
 
-leetcode link:
+My leetcode profile:
 
 ```
 https://leetcode.com/Codesmith28/
