@@ -7,3 +7,5 @@ My leetcode profile:
 ```
 https://leetcode.com/Codesmith28/
 ```
+
+Follow me on github 👀
