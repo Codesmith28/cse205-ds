@@ -14,7 +14,7 @@ void hanoi(int n, char sou, char dest, char help)
     // first move all from source to helper as in the problem of 2 discs
     hanoi(n - 1, sou, help, dest);
 
-    cout << "Move from " << sou << " to " << dest << endl;
+    cout << "Move disc " << n << " from " << sou << " to " << dest << endl;
     x++;
 
     // at last the source disc will be empty and all discs will be on helper
