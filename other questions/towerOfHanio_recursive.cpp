@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 // global variable to count the number of steps
@@ -11,14 +11,14 @@ void hanoi(int n, char sou, char dest, char help)
         return;
     }
 
-    // first move all from source to helper as in the problem of 2 discs
+    // move top n-1 from source to helper
     hanoi(n - 1, sou, help, dest);
 
+    // move the largest disc from source to destination
     cout << "Move disc " << n << " from " << sou << " to " << dest << endl;
     x++;
 
-    // at last the source disc will be empty and all discs will be on helper
-    // hence the source will act as helper and helper will act as source
+    // move the n-1 discs from helper to destination
     hanoi(n - 1, help, dest, sou);
 }
 
@@ -28,9 +28,17 @@ int main()
 
     int n;
     cin >> n;
-    hanoi(n, 'A', 'C', 'B');
 
+    time_t start, end;
+    double time_taken;
+
+    time(&start);
+    hanoi(n, 'A', 'C', 'B');
+    time(&end);
+
+    time_taken = double(end - start);
     cout << "Total number of steps: " << x << endl;
+    cout << "Time taken to run: " << time_taken << " sec" << endl;
     // cout << "Total number of steps: " << (1<<n)- 1 << endl;
     return 0;
 }

@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     vector<string> wordDict = {"a", "b", "bbb", "bbbb"};
-    string s = "bb";                                                                                                                                                                                                                                                                                                                                                                    
+    string s = "bb";
 
     bool flag = true;
 
