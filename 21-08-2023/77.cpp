@@ -17,7 +17,6 @@ public:
         // start inserting the numbers from it to n:
         for (int i = it; i <= n; i++)
         {
-
             // insert i:
             temp.push_back(i);
             // call for other elements after i and before n:
