@@ -67,7 +67,7 @@ public:
         return ((rear + 1) % size == front);
     }
 };
-
+ 
 /**
  * Your MyCircularQueue object will be instantiated and called as such:
  * MyCircularQueue* obj = new MyCircularQueue(k);
