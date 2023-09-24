@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int main()
+int main()  
 {
     vector<int> arr = { 31, 28, 19, 4, 60, 2, 29, 22, 39 };
     int k = 30;
