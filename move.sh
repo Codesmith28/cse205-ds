@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Move all files that end with .cpp from current directory to cp directory except run.cpp
-
 for file in *.cpp
 do
     if [ $file != "run.cpp" ]
     then
-        mv $file cp
+        echo "Moving file: $file -> cp directory"
+        mv -f $file cp
     fi
 done
+echo "Done! All files have been moved to cp directory."
