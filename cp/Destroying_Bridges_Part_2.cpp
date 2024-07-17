@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iterator>
 #include <vector>
 #ifndef ONLINE_JUDGE
 #include "debug.h"
@@ -17,51 +18,33 @@ void solve() {
     int n, c;
     cin >> n >> c;
     vector<int> a(n);
-    for (int &i : a)
-        cin >> i;
+    for (int &i : a) cin >> i;
 
-    vector<pair<int, int>> b;
-    for (int i = 0; i < n; i++) {
-        b.push_back({a[i], i});
-    }
+    sort(rbegin(a) + 1, rend(a));
 
-    sort(begin(b), end(b));
-    // dbg(b);
+    int cnt = 1, tc = 0;
+    while (true) {
+        if (cnt >= n) break;
+        bool notPOssible = false;
+        tc = 0;
 
-    // home island isolated:
-    int tc = 0;
-    for (int i = 1; i < n; i++) {
-        tc += a[0] * a[i];
-    }
-    if (tc <= c) {
-        cout << 1 << endl;
-        return;
-    }
-
-    // trying to isolate each island:
-    int cnt = 0;
-    for (int i = 0; i < n; i++) {
-        int itc = 0;
-        if (b[i].second == 0) {
-            continue;
-        }
-        for (int j = 0; j < n; j++) {
-            if (j == i) {
-                continue;
+        for (int i = 0; i < cnt; i++) {
+            for (int j = cnt; j < n; j++) {
+                tc += a[i] * a[j];
+                if (tc > c) {
+                    notPOssible = true;
+                    break;
+                }
             }
-            itc += b[i].first * b[j].first;
         }
-        if (itc <= c) {
-            cnt++;
-            c -= itc;
-            b[i] = {0, 0};
+        if (!notPOssible) {
+            cout << cnt << endl;
+            return;
         }
-        if (itc > c) {
-            break;
-        }
+        cnt++;
     }
 
-    cout << n - cnt << endl;
+    cout << n << endl;
 }
 
 int32_t main() {

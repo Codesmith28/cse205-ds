@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <bits/stdc++.h>
 #ifndef ONLINE_JUDGE
 #include "debug.h"
@@ -16,27 +17,34 @@ void solve() {
     int n;
     cin >> n;
 
-    for (int i = 1; i <= n; i++) {
-        cout << i << " ";
+    vector<int> a(n);
+    iota(a.begin(), a.end(), 1);
+
+    if (n == 1) {
+        cout << 1 << endl;
+        cout << 1 << endl;
+        return;
+    } else if (n == 2) {
+        cout << 1 << " " << 2 << endl;
+        cout << 2 << " " << 1 << endl;
+        return;
     }
+
+    for (int &it : a) cout << it << " ";
     cout << endl;
 
+    // reverse the array:
+    reverse(begin(a), end(a));
+
     if (n % 2) {
-        for (int i = (n + 1) / 2; i <= n; i++) {
-            cout << i << " ";
-        }
-        for (int i = 1; i < (n + 1) / 2; i++) {
-            cout << i << " ";
-        }
+        for (int i = (n + 1) / 2; i <= n; i++) cout << i << " ";
+        for (int i = 1; i < (n + 1) / 2; i++) cout << i << " ";
+        cout << endl;
     } else {
-        for (int i = n / 2 + 1; i <= n; i++) {
-            cout << i << " ";
-        }
-        for (int i = 1; i <= n / 2; i++) {
-            cout << i << " ";
-        }
+        for (int i = n / 2 + 1; i <= n; i++) cout << i << " ";
+        for (int i = 1; i <= n / 2; i++) cout << i << " ";
+        cout << endl;
     }
-    cout << endl;
 }
 
 int32_t main() {

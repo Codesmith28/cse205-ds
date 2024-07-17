@@ -25,19 +25,14 @@ void sieve() {
         }
     }
     for (int i = 2; i < N; i++) {
-        if (isPrime[i])
-            primes.push_back(i);
+        if (isPrime[i]) primes.push_back(i);
     }
 }
 
-// find the smallest prime factor of a number
 int spf(int n) {
     for (int i = 2; i * i <= n; i++) {
-        if (n % i == 0 and isPrime[i]) {
-            return i;
-        }
+        if (isPrime[i] && n % i == 0) return i;
     }
-
     return n;
 }
 
@@ -46,13 +41,11 @@ void solve() {
     cin >> k;
     int x = spf(k);
 
-    int ans = 0;
-    int i = 0;
+    int ans = 0, i = 0;
     while (primes[i] != x) {
         ans += k * primes[i];
         i++;
     }
-
     ans += k * x;
     cout << ans << endl;
 }
@@ -64,6 +57,7 @@ int32_t main() {
 
     int testCases = 1;
     cin >> testCases;
+
     sieve();
 
     while (testCases--) {

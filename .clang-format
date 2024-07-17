@@ -7,7 +7,7 @@ ColumnLimit: 1000
 AlignArrayOfStructures: Left
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: true
-AllowShortLoopsOnASingleLine: false
+AllowShortLoopsOnASingleLine: true
 BinPackArguments: false
 BinPackParameters: false
 BreakBeforeBraces: Custom
@@ -20,7 +20,7 @@ BraceWrapping:
     IndentBraces: false
 Cpp11BracedListStyle: true
 IndentCaseLabels: true
-IndentPPDirectives: AfterHash
+IndentPPDirectives: None
 KeepEmptyLinesAtTheStartOfBlocks: false
 SpacesInAngles: false
 SpaceAfterCStyleCast: false
