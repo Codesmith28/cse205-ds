@@ -18,11 +18,11 @@ get_problem_source() {
     local cph_file="$CPH_DIR/.${file}_*.prob"
     
     if [ -f $cph_file ]; then
-        if grep -q '"group":"Codeforces' "$cph_file"; then
+        if grep -qi "Codeforces" "$cph_file"; then
             echo "codeforces"
-        elif grep -q '"group":"CodeChef' "$cph_file"; then
+        elif grep -qi "Codechef" "$cph_file"; then
             echo "codechef"
-        elif grep -q '"url":"https://cses.fi/' "$cph_file"; then
+        elif grep -qi "CSES" "$cph_file"; then
             echo "cses"
         else
             echo "unknown"
@@ -33,35 +33,38 @@ get_problem_source() {
 }
 
 # Organize files
-for file in "$CP_DIR"/*.cpp; do
+for file in "$CP_DIR"/*.cpp "$CP_DIR"/*.h; do
     if [ -f "$file" ]; then
         filename=$(basename "$file")
         
+        # Ignore debug.h file
+        if [ "$filename" = "debug.h" ]; then
+            continue
+        fi
+        
+        # Check if filename starts with a capital letter followed by underscore (Codeforces)
+        if [[ $filename =~ ^[A-Z]_ ]]; then
+            mv "$file" "$CODEFORCES_DIR/"
         # Check if filename starts with a number (LeetCode)
-        if [[ $filename =~ ^[0-9] ]]; then
+        elif [[ $filename =~ ^[0-9] ]]; then
             mv "$file" "$LEETCODE_DIR/"
         else
-            # Check file patterns for Codeforces
-            if [[ $filename =~ ^[A-G]_ ]]; then
-                mv "$file" "$CODEFORCES_DIR/"
-            else
-                # Check .cph files for source
-                source=$(get_problem_source "$filename")
-                case $source in
-                    "codeforces")
-                        mv "$file" "$CODEFORCES_DIR/"
-                        ;;
-                    "codechef")
-                        mv "$file" "$CODECHEF_DIR/"
-                        ;;
-                    "cses")
-                        mv "$file" "$CSES_DIR/"
-                        ;;
-                    *)
-                        mv "$file" "$OTHERS_DIR/"
-                        ;;
-                esac
-            fi
+            # Check .cph files for source
+            source=$(get_problem_source "$filename")
+            case $source in
+                "codeforces")
+                    mv "$file" "$CODEFORCES_DIR/"
+                    ;;
+                "codechef")
+                    mv "$file" "$CODECHEF_DIR/"
+                    ;;
+                "cses")
+                    mv "$file" "$CSES_DIR/"
+                    ;;
+                *)
+                    mv "$file" "$OTHERS_DIR/"
+                    ;;
+            esac
         fi
     fi
 done
