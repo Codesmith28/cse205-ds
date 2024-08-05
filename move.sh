@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Enter dest(lc/cc/cf/cs): " dir
+read -p "Enter dest(lc/cc/cf/cs/ot): " dir
 
 case $dir in
     "lc")
@@ -15,8 +15,11 @@ case $dir in
     "cs")
         dest="cses"
         ;;
+    "ot")
+        dest="others"
+        ;;
     *)
-        echo "Invalid directory"
+        echo "Invalid dest"
         exit 1
         ;;
 esac
