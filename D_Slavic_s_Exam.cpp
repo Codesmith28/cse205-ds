@@ -54,7 +54,7 @@ void solve() {
     }
 
     if (found) {
-        cout << "YES\n" << result << endl;
+        cout << "YES\n" << result << "\n";
     } else {
         cout << "NO\n";
     }

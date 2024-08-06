@@ -24,9 +24,6 @@ void solve() {
         if (s[i] == '_') s[i] = '(';
     }
 
-    // cout << s << endl;
-
-    // gaps between ( and )
     int ans = 0;
     stack<int> st;
 
