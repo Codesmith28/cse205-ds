@@ -1,10 +1,10 @@
 #!/bin/bash
 
-read -p "Enter dest(lc/cc/cf/cs/ot): " dir
+read -p "Enter dest(lcg/cc/cf/cs/ot): " dir
 
 case $dir in
-    "lc")
-        dest="leetcode"
+    "lcg")
+        dest="leetcodeleetcode_gfg"
         ;;
     "cc")
         dest="codechef"

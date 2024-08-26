@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 /* (╯°□°)╯︵ ┻━┻ */
 
@@ -7,16 +7,21 @@ using namespace std;
 #define endl "\n"
 
 void solve() {
-    int l,r;
-    cin >> l >> r;
+    int n;
+    cin >> n;
+    string s, t;
+    cin >> s;
 
-    
+    t = s;
+    sort(begin(t), end(t));
+
+    cout << (t == s ? "YES" : "NO") << endl;
 }
 
 int32_t main() {
     int testCases = 1;
     cin >> testCases;
-    while(testCases--) {
+    while (testCases--) {
         solve();
     }
     return 0;
