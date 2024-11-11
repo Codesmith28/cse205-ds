@@ -18,35 +18,26 @@ const int ninf = -1 * inf;
 void solve( ) {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
+    vector<int> a(n);
+    for (int &i : a) cin >> i;
+    vector<int> b = a;
 
-    for (int i = 1; i < n; i++) {
-        if (s[i] == '_' && s[i - 1] == '(') s[i] = ')';
-    }
+    sort(b.begin( ), b.end( ));
+    map<int, int> mp;
 
-    for (int i = n - 2; i >= 0; i--) {
-        if (s[i] == '_' && s[i + 1] == ')') s[i] = '(';
-    }
-
+    int mx = 0;
     for (int i = 0; i < n; i++) {
-        if (s[i] == '_') s[i] = '(';
+        mp[abs(a[i] - b[i])]++;
+        mx = max(mx, abs(a[i] - b[i]));
     }
 
-    stack<int> st;
-    int gaps = 0;
-
-    for (int i = 0; i < n; i++) {
-        if (s[i] == '(') {
-            st.push(i);
-        } else if (s[i] == ')') {
-            int x = st.top( );
-            st.pop( );
-            gaps += i - x;
-        }
+    // gcd of all keys
+    int gcd = 0;
+    for (auto it : mp) {
+        gcd = __gcd(gcd, it.first);
     }
 
-    cout << gaps << endl;
+    cout << gcd << endl;
 }
 
 int32_t main( ) {

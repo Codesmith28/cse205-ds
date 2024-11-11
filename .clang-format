@@ -4,10 +4,13 @@ TabWidth: 4
 UseTab: Never
 ColumnLimit: 1000
 
+AlignConsecutiveMacros: true
 AlignArrayOfStructures: Left
+AlignTrailingComments: true
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: true
 AllowShortLoopsOnASingleLine: true
+AllowShortLambdasOnASingleLine: Empty
 BinPackArguments: false
 BinPackParameters: false
 BreakBeforeBraces: Custom
@@ -25,4 +28,4 @@ KeepEmptyLinesAtTheStartOfBlocks: false
 SpacesInAngles: false
 SpaceAfterCStyleCast: false
 SpaceBeforeParens: ControlStatements
-SpaceInEmptyParentheses: false
+SpaceInEmptyParentheses: true

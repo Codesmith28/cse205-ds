@@ -22,12 +22,12 @@ class Solution {
                 min = reach;
                 city = i;
             }
-       }
+        }
 
         return city;
     }
 
-    void dj(int n, vvii &adj, vi &spath, int src) {
+    void dj(vvii &adj, vi &spath, int src) {
         priority_queue<pii, vector<pii>, greater<pii>> pq;
         pq.push({0, src});
 
@@ -58,7 +58,7 @@ class Solution {
         }
 
         for (int i = 0; i < n; i++) {
-            dj(n, adj, spath[i], i);
+            dj(adj, spath[i], i);
         }
 
         return finder(n, spath, thres);
