@@ -7,8 +7,10 @@ class Solution {
   public:
     int maxScore(vector<vector<int>> &grid) {
         for (auto &it : grid) it.push_back(0);
-        for (auto &it : grid) sort(begin(it), end(it), greater<int>());
-        sort(grid.begin(), grid.end(), [](vector<int> &a, vector<int> &b) { return a[0] > b[0]; });
+        for (auto &it : grid) sort(begin(it), end(it), greater<int>( ));
+        sort(grid.begin( ), grid.end( ), [](vector<int> &a, vector<int> &b) {
+            return a[0] > b[0];
+        });
 
         // Create a set to track unique elements
         set<int> uniqueElements;
@@ -17,7 +19,7 @@ class Solution {
         int totalSum = 0;
         for (const auto &row : grid) {
             for (int value : row) {
-                if (uniqueElements.find(value) == uniqueElements.end()) {
+                if (uniqueElements.find(value) == uniqueElements.end( )) {
                     uniqueElements.insert(value);
                     totalSum += value;
                 }
@@ -28,7 +30,7 @@ class Solution {
     }
 };
 
-int main() {
+int main( ) {
     Solution s;
     /*
     [[5],[7],[19],[5]]
