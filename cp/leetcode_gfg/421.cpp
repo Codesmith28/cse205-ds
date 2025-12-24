@@ -5,7 +5,7 @@ using namespace std;
 struct TrieNode {
     TrieNode *child[2];
     bool isEnd;
-    TrieNode() {
+    TrieNode( ) {
         isEnd = false;
         for (int i = 0; i < 2; i++) child[i] = NULL;
     }
@@ -15,7 +15,7 @@ void insert(TrieNode *root, string key) {
     TrieNode *node = root;
     for (char c : key) {
         int idx = c - '0';
-        if (!node->child[idx]) node->child[idx] = new TrieNode();
+        if (!node->child[idx]) node->child[idx] = new TrieNode( );
         node = node->child[idx];
     }
     node->isEnd = true;
@@ -55,9 +55,9 @@ class Solution {
         int msb = getMsb(mx);
 
         vector<string> bins;
-        for (auto it : nums) bins.push_back(bitset<32>(it).to_string().substr(32 - msb));
+        for (auto it : nums) bins.push_back(bitset<32>(it).to_string( ).substr(32 - msb));
 
-        TrieNode *root = new TrieNode();
+        TrieNode *root = new TrieNode( );
         for (string &s : bins) insert(root, s);
 
         int res = 0;
@@ -70,7 +70,7 @@ class Solution {
     }
 };
 
-int main() {
+int main( ) {
     vector<vector<int>> nums = {
         {0},
     };
